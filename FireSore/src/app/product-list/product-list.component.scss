@@ -1,0 +1,29 @@
+.container {
+  background: #cfdff0;
+  padding: 20px;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  background: #8EB9D8;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+h2{
+  margin-left: 20px;
+}
+
+button {
+  border-radius: 4px;
+  height: 40px;
+  font-weight: bold;
+  color: black;
+  background-color: #BDE9E4;
+  padding: 2px;
+  margin-right: 40px;
+  width: 10%;
+  
+}

@@ -6,7 +6,7 @@ Este projeto é um exemplo de aplicação que realiza operações CRUD (Create, 
 
 ## Protótipo
 
-Link para protótipo no Figma: [Clique aqui](https://www.figma.com)
+Link para protótipo no Figma: [Clique aqui](https://www.figma.com/design/lXa9GDY1CIsuS9tCwF5IjS/desafio?node-id=0-1&p=f&t=iCRHzXYXMAaZbSGm-0)
 
 ## Tecnologias Utilizadas
 

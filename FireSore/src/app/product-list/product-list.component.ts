@@ -10,13 +10,23 @@ import { FireStoreService } from '../../Services/fire-store.service';
 export class ProductListComponent {
 
   products: any[] = [];
+  pageSize = 10;
+  isNextPageAvailable:boolean = true;
 
   constructor(private fireStoreService: FireStoreService) {
     this.loadProducts();
   }
 
-  async loadProducts() {
-    this.products = await this.fireStoreService.getProducts();
+  async loadProducts(nextPage: boolean = false) {
+    const newProducts = await this.fireStoreService.getProducts(this.pageSize, nextPage);
+
+    if (newProducts.length < this.pageSize) {
+      this.isNextPageAvailable = false;
+    }else{
+      this.isNextPageAvailable = true;
+    }
+
+    this.products = newProducts;
   }
 
   deleteProduct(productId: string) {
@@ -38,6 +48,25 @@ export class ProductListComponent {
       });
   }
 
+  updateProduct(updatedProduct: any) {
+    if (!updatedProduct || !updatedProduct.code) {
+      console.error("Erro: Produto inválido para atualização.");
+      return;
+    }
+    
+    this.fireStoreService.updateProduct(updatedProduct.code, updatedProduct)
+      .then(() => {
+        this.loadProducts(); 
+      })
+      .catch(error => {
+        console.error("Erro ao atualizar produto:", error);
+      });
+  }
+  onProductCreated() {
+    this.loadProducts(false);
+  }
+  
+
   isModalOpen = false;
 
   openModal() {
@@ -46,5 +75,12 @@ export class ProductListComponent {
 
   closeModal() {
     this.isModalOpen = false;
+  }
+  loadNextPage() {
+    this.loadProducts(true); 
+  }
+
+  loadPreviousPage() {
+    this.loadProducts(false);
   }
 }

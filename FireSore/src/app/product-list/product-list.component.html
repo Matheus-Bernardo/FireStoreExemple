@@ -7,10 +7,17 @@
     <div *ngFor="let product of products; let i = index">
         <app-product-item 
             [product]="product" 
-            (delete)="deleteProduct($event)"> 
+            (delete)="deleteProduct($event)" 
+            (update)="updateProduct($event)"> 
         </app-product-item>
+    </div>
+
+    <!-- Paginação -->
+    <div class="pagination-buttons">
+        <button (click)="loadPreviousPage()" [disabled]="!products.length">Página Anterior</button>
+        <button (click)="loadNextPage()" [disabled]="!isNextPageAvailable">Próxima Página</button>
     </div>
 </div>
 
-<!-- Modal de cadastro -->
+<!-- Modal de Cadastro -->
 <app-product-modal *ngIf="isModalOpen" (close)="closeModal()"></app-product-modal>

@@ -24,6 +24,7 @@ export class ProductModalComponent {
       await this.fireStoreService.createProduct(this.product);
       this.create.emit();
       alert('Produto cadastrado com sucesso!');
+      this.product = { name: '', description: '', amount: 0 };
       
     } catch (error) {
       alert('Erro ao cadastrar o produto');

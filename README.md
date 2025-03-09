@@ -1,4 +1,12 @@
 # FireStoreExemple
+## Índice
+
+- [Descrição](#descrição)
+- [Protótipo](#protótipo)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Funcionalidades](#funcionalidades)
+- [Como Executar o Projeto](#como-executar-o-projeto)
+- [Autor](#autor)
 
 ## Descrição
 
@@ -34,13 +42,36 @@ Link para protótipo no Figma: [Clique aqui](https://www.figma.com/design/lXa9GD
     ```bash
     npm install
     ```
-4. Execute a aplicação:
+4. Dentro de src, crie um arquivo Environments/environment.ts e cole suas credenciais do firebase:
+    ```// Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    import { getFirestore } from "firebase/firestore";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    export const firebaseConfig = {
+    apiKey: "yourkey",
+    authDomain: "yourDomain",
+    projectId: "your ProjectId",
+    storageBucket: "YourStorageBucket",
+    messagingSenderId: "number",
+    appId: "appId"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    ```    
+5. Execute a aplicação:
     ```bash
     ng serve
     ```
-5. Acesse a aplicação no navegador:
+6. Acesse a aplicação no navegador:
     ```
     http://localhost:4200
     ```
 
 
+    ## Autor
+    Desenvolvido por Matheus Bernardo. Você pode entrar em contato através do [LinkedIn](https://www.linkedin.com/in/matheus-bernardo-b20796196/) para mais informações.

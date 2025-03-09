@@ -9,14 +9,33 @@ import { FireStoreService } from '../../Services/fire-store.service';
 })
 export class ProductListComponent {
 
-  products: any[] = []; 
+  products: any[] = [];
 
   constructor(private fireStoreService: FireStoreService) {
     this.loadProducts();
   }
 
   async loadProducts() {
-    this.products = await this.fireStoreService.getProducts(); 
+    this.products = await this.fireStoreService.getProducts();
+  }
+
+  deleteProduct(productId: string) {
+    if (!productId) {
+      return;
+    }
+
+    const confirmDelete = window.confirm("Deseja realmente excluir este produto?");
+    if (!confirmDelete) {
+      return;
+    }
+
+    this.fireStoreService.deleteProduct(productId)
+      .then(() => {
+        this.products = this.products.filter(product => product.code !== productId);
+      })
+      .catch(error => {
+        console.error("Erro ao excluir produto:", error);
+      });
   }
 
   isModalOpen = false;

@@ -1,26 +1,26 @@
 <div class="product-item">
   <div class="product-item-list">
     <p> Código</p>
-    <input type="text" [(ngModel)]="product.code" placeholder="Código" >
+    <input type="text" [(ngModel)]="product.code" placeholder="Código" [disabled]="true">
   </div>
 
   <div class="product-item-list">
     <p>Nome</p>
-    <input type="text" [(ngModel)]="product.name" placeholder="Nome" >
+    <input type="text" [(ngModel)]="product.name" placeholder="Nome" [disabled]="true" >
   </div>
 
   <div class="product-item-list">
     <p>Descrição</p>
-    <input type="text" [(ngModel)]="product.description" placeholder="Descrição" >
+    <input type="text" [(ngModel)]="product.description" placeholder="Descrição" [disabled]="true" >
   </div>
 
   <div class="product-item-list">
     <p>Quantidade</p>
-    <input type="number" [(ngModel)]="product.amount" placeholder="Quantidade" >
+    <input type="number" [(ngModel)]="product.amount" placeholder="Quantidade" [disabled]="true" >
   </div>
 
   <div class="buttons-container">
-    <button (click)="delete.emit()">
+    <button (click)="onDeleteProduct()">
       <img src="lixeira-de-reciclagem.png" alt="Deletar">
     </button>
     <button>

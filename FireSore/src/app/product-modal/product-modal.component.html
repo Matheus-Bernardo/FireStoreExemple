@@ -1,0 +1,19 @@
+<div class="modal-overlay" (click)="closeModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+        <h2>Cadastro de produto</h2>
+
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="product.name" placeholder="Nome">
+
+        <label>Descrição</label>
+        <input type="text" [(ngModel)]="product.description" placeholder="Descrição">
+
+        <label>Quantidade</label>
+        <input type="number" [(ngModel)]="product.amount" placeholder="Quantidade">
+
+        <div class="button-container">
+            <button class="cancel-button" (click)="closeModal()">Cancelar</button>
+            <button class="submit-button" (click)="saveProduct()">Cadastrar</button>
+        </div>
+    </div>
+</div>

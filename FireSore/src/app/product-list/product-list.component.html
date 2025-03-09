@@ -1,10 +1,14 @@
 <div class="container">
     <div class="header">
         <h2>Lista de Produtos</h2>
-        <button (click)="addProduct()">Novo produto</button>
+        <button (click)="openModal()">Novo produto</button>
     </div>
+
     <div *ngFor="let product of products; let i = index">
-        <app-product-item [product]="product" (delete)="deleteProduct(i)">
+        <app-product-item [product]="product">
         </app-product-item>
-    </div>
+    </div>    
 </div>
+
+<!-- Modal de cadastro -->
+<app-product-modal *ngIf="isModalOpen" (close)="closeModal()"></app-product-modal>

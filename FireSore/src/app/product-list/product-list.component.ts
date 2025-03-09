@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FireStoreService } from '../../Services/fire-store.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,17 +8,24 @@ import { Component } from '@angular/core';
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent {
-  products = [
-    { code: '001', name: 'Produto 1', description: 'Descrição 1', quantity: 10 },
-    { code: '002', name: 'Produto 2', description: 'Descrição 2', quantity: 15 },
-    { code: '003', name: 'Produto 3', description: 'Descrição 3', quantity: 20 }
-  ];
 
-  addProduct() {
-    this.products.push({ code: '', name: '', description: '', quantity: 0 });
+  products: any[] = []; 
+
+  constructor(private fireStoreService: FireStoreService) {
+    this.loadProducts();
   }
 
-  deleteProduct(index: number) {
-    this.products.splice(index, 1);
+  async loadProducts() {
+    this.products = await this.fireStoreService.getProducts(); 
+  }
+
+  isModalOpen = false;
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
   }
 }
